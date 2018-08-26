@@ -1,4 +1,4 @@
-package com.gglee.db;
+package com.gglee.persistence;
 
 import static org.junit.Assert.assertNotNull;
 
