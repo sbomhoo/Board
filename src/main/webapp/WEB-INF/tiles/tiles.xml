@@ -2,26 +2,51 @@
 <!DOCTYPE tiles-definitions PUBLIC
        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
 <tiles-definitions>
 	<definition name="base" template="/WEB-INF/views/layout/template.jsp">
 		<put-attribute name="header" value="/WEB-INF/views/layout/header.jsp" />
+		<put-attribute name="content"/>
 		<put-attribute name="footer" value="/WEB-INF/views/layout/footer.jsp" />
+		<put-list-attribute name="javascripts">
+			<add-attribute value="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"/>
+			<add-attribute value="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"/>
+		</put-list-attribute>
+		<put-list-attribute name="stylesheets">
+			<add-attribute value="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+			<add-attribute value="/resources/css/style.css"/>
+		</put-list-attribute>
 	</definition>
 
-	<definition name="/" extends="base">
-		<put-attribute name="body" value="/WEB-INF/views/index.jsp" />
-	</definition>
-
+	<!-- Home Page -->
 	<definition name="*" extends="base">
-		<put-attribute name="body" value="/WEB-INF/views/{1}.jsp" />
+		<put-attribute name="content" value="/WEB-INF/views/index.jsp" />
 	</definition>
 
-	<definition name="*/*" extends="base">
-		<put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp" />
+	<!-- Board Read Page -->
+	<definition name="board/read" extends="base">
+		<put-attribute name="content" value="/WEB-INF/views/board/read.jsp" />
+		<put-list-attribute name="javascripts" inherit="true">
+			<add-attribute value="/resources/js/read.js"/>
+		</put-list-attribute>
 	</definition>
-
-	<definition name="*/*/*" extends="base">
-		<put-attribute name="body" value="/WEB-INF/views/{1}/{2}/{3}.jsp" />
+	
+	<!-- Board Register Page -->
+	<definition name="board/register" extends="base">
+		<put-attribute name="content" value="/WEB-INF/views/board/register.jsp" />
+	</definition>
+	
+		<!-- Board Modify Page -->
+	<definition name="board/modify" extends="base">
+		<put-attribute name="content" value="/WEB-INF/views/board/modify.jsp" />
+		<put-list-attribute name="javascripts" inherit="true">
+			<add-attribute value="/resources/js/modify.js"/>
+		</put-list-attribute>
+	</definition>
+	
+	<!-- Board List All Page -->
+	<definition name="board/listAll" extends="base">
+		<put-attribute name="content" value="/WEB-INF/views/board/listAll.jsp" />
 	</definition>
 
 </tiles-definitions>
