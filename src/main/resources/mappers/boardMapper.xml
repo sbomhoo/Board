@@ -39,4 +39,38 @@
 	]]>
 	</select>
 	
+	<select id="listPage" resultType="board">
+	<![CDATA[
+	SELECT
+		bno, title, content, writer, regdate, viewcnt
+	FROM
+	    board
+	WHERE bno > 0
+	ORDER BY bno, regdate desc
+	limit #{page}, 10
+	]]>
+	</select>
+
+	<select id="listCriteria" resultType="board">
+	<![CDATA[
+	SELECT
+		bno, title, content, writer, regdate, viewcnt
+	FROM
+	    board
+	WHERE bno > 0
+	ORDER BY bno, regdate desc
+	limit #{pageStart}, #{perPageNum}
+	]]>
+	</select>
+	
+	<select id="countPaging" resultType="int">
+	<![CDATA[
+	SELECT
+		count(bno)
+	FROM
+	    board
+	WHERE bno > 0
+	]]>
+	</select>
+	
 </mapper>

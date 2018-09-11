@@ -17,6 +17,8 @@ public class CommonExceptionAdvice {
 		modelAndView.setViewName("/error_common");
 		modelAndView.addObject("exception", ex);
 		
+		logger.error("Exception: ", ex.getMessage());
+		
 		return modelAndView;
 	}
 

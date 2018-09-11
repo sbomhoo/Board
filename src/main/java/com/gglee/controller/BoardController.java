@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.gglee.domain.BoardVO;
+import com.gglee.domain.Criteria;
+import com.gglee.domain.PageMaker;
 import com.gglee.service.IBoardService;
 
 /**
@@ -85,6 +87,27 @@ public class BoardController {
 		rttr.addFlashAttribute("msg", "SUCCESS");
 		
 		return "redirect:/board/listAll";
+	}
+	
+	@RequestMapping(value="/listCri", method = RequestMethod.GET)
+	public void listCriteria(Criteria criteria, Model model) throws Exception {
+		logger.info("show list page with criteria..............");
+		
+		model.addAttribute("list", boardService.listCriteria(criteria));
+	}
+	
+	@RequestMapping(value="/listPage", method = RequestMethod.GET)
+	public void listPage(Criteria criteria, Model model) throws Exception {
+		logger.info("show list page with pagemaker..............");
+		logger.info(criteria.toString());
+		
+		model.addAttribute("list", boardService.listCriteria(criteria));
+
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCriteria(criteria);
+		pageMaker.setTotalCount(boardService.listCountCriteria(criteria));
+
+		model.addAttribute("pageMaker", pageMaker);
 	}
 	
 }

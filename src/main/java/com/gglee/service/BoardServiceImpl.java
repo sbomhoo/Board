@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.gglee.domain.BoardVO;
+import com.gglee.domain.Criteria;
 import com.gglee.persistence.IBoardDAO;
 
 /**
@@ -44,6 +45,16 @@ public class BoardServiceImpl implements IBoardService {
 	@Override
 	public List<BoardVO> listAll() throws Exception {
 		return boardDAO.listAll();
+	}
+
+	@Override
+	public List<BoardVO> listCriteria(Criteria criteria) throws Exception {
+		return boardDAO.listCriteria(criteria);
+	}
+	
+	@Override
+	public int listCountCriteria(Criteria criteria) throws Exception {
+		return boardDAO.countPaging(criteria);
 	}
 
 }
