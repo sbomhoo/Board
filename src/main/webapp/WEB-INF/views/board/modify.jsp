@@ -6,6 +6,9 @@
 
 	<div>
 		<form role="form" method="post">
+			<input type="hidden" id="page" name="page" value="${criteria.page}">
+			<input type="hidden" id="perPageNum" name="perPageNum" value="${criteria.perPageNum}">
+
 			<!-- 게시글 번호 -->
 			<div class="form-group">
 				<label for="bno">BNO</label>

@@ -48,5 +48,15 @@
 	<definition name="board/listAll" extends="base">
 		<put-attribute name="content" value="/WEB-INF/views/board/listAll.jsp" />
 	</definition>
+	
+	<!-- Board List Page with Criteria -->
+	<definition name="board/listCri" extends="base">
+		<put-attribute name="content" value="/WEB-INF/views/board/listCri.jsp" />
+	</definition>
+
+	<!-- Board List Page with Pagemaker -->
+	<definition name="board/listPage" extends="base">
+		<put-attribute name="content" value="/WEB-INF/views/board/listPage.jsp" />
+	</definition>
 
 </tiles-definitions>

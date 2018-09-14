@@ -5,10 +5,13 @@ $(document).ready(function() {
 	$(".btn-primary").on("click", function() {
 		formObj.submit();
 	});
+	
 
 	// 게시글 수정한 작업 취소 후 목록 페이지로 이동
 	$(".btn-danger").on("click", function() {
-		self.location = "/board/listAll";
+		var page = document.getElementById ('page').value;
+		var perPageNum = document.getElementById ('perPageNum').value;
+		self.location = "/board/listPage?page="+page+"&perPageNum="+perPageNum;
 	});
 
 });

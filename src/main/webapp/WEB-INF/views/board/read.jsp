@@ -7,6 +7,8 @@
 	<div>
 		<form role="form" method="post">
 			<input type="hidden" name="bno" value="${boardVO.bno}">
+			<input type="hidden" name="page" value="${criteria.page}">
+			<input type="hidden" name="perPageNum" value="${criteria.perPageNum}">
 		</form>
 		
 		<!-- 게시글 제목 -->

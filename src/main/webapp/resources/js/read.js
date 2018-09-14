@@ -16,6 +16,8 @@ $(document).ready(function() {
 
 	// 게시글 목록 페이지로 이동
 	$(".btn-primary").on("click", function() {
-		self.location = "/board/listAll";
+		formObj.attr("action", "/board/listPage");
+		formObj.attr("method", "get");
+		formObj.submit();
 	});
 });
