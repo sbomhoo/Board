@@ -1,5 +1,8 @@
 package com.gglee.domain;
 
+import org.springframework.web.util.UriComponents;
+import org.springframework.web.util.UriComponentsBuilder;
+
 /**
  * 페이징 처리를 전담하는 클래스
  * 
@@ -106,4 +109,13 @@ public class PageMaker {
 		next = endPage * criteria.getPerPageNum() >= totalCount ? false : true;
 	}
 	
+	public String makeQuery(int page) {
+		UriComponents uriComponents = UriComponentsBuilder.newInstance()
+				.queryParam("page", page)
+				.queryParam("perPageNum", criteria.getPerPageNum())
+				.build();
+		
+		return uriComponents.toString();
+	}
+
 }

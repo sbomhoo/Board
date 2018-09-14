@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -59,34 +60,40 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value = "/read", method = RequestMethod.GET)
-	public void read(@RequestParam("bno") int bno, Model model) throws Exception {
+	public void read(@RequestParam("bno") int bno, @ModelAttribute("criteria") Criteria criteria, Model model)
+			throws Exception {
 		logger.info("read page...........");
-		
+
 		model.addAttribute("boardVO", boardService.read(bno));
 	}
 	
 	@RequestMapping(value = "/remove", method = RequestMethod.POST)
-	public String remove(@RequestParam("bno") int bno, RedirectAttributes rttr) throws Exception {
+	public String remove(@RequestParam("bno") int bno, Criteria criteria, RedirectAttributes rttr) throws Exception {
 		boardService.remove(bno);
 		
+		rttr.addAttribute("page", criteria.getPage());
+		rttr.addAttribute("perPageNum", criteria.getPerPageNum());
 		rttr.addFlashAttribute("msg", "SUCCESS");
 		
-		return "redirect:/board/listAll";
+		return "redirect:/board/listPage";
 	}
 
 	@RequestMapping(value = "/modify", method = RequestMethod.GET)
-	public void modifyGET(int bno, Model model) throws Exception {
+	public void modifyGET(int bno, @ModelAttribute("criteria") Criteria criteria, Model model) throws Exception {
 		model.addAttribute(boardService.read(bno));
 	}
 	
 	@RequestMapping(value = "/modify", method = RequestMethod.POST)
-	public String modifyPOST(BoardVO board, RedirectAttributes rttr) throws Exception {
+	public String modifyPOST(BoardVO board, Criteria criteria, RedirectAttributes rttr) throws Exception {
 		logger.info("modify post.............");
 		
 		boardService.modify(board);
+		
+		rttr.addAttribute("page", criteria.getPage());
+		rttr.addAttribute("perPageNum", criteria.getPerPageNum());
 		rttr.addFlashAttribute("msg", "SUCCESS");
 		
-		return "redirect:/board/listAll";
+		return "redirect:/board/listPage";
 	}
 	
 	@RequestMapping(value="/listCri", method = RequestMethod.GET)
