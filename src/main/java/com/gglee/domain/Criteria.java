@@ -9,6 +9,8 @@ public class Criteria {
 	
 	private int page = 1;
 	private int perPageNum = 10;
+	private String searchType;
+	private String keyword;
 	
 	public Criteria() {}
 
@@ -42,9 +44,26 @@ public class Criteria {
 		return (this.page - 1) * perPageNum;
 	}
 	
+	public String getSearchType() {
+		return searchType;
+	}
+
+	public void setSearchType(String searchType) {
+		this.searchType = searchType;
+	}
+
+	public String getKeyword() {
+		return keyword;
+	}
+
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
+
 	@Override
 	public String toString() {
-		return "[page=" + page + ", " + "perPageNum=" + perPageNum +"]";
+		return "[page=" + page + ", perPageNum=" + perPageNum + ", searchType=" + searchType + ", keyword=" + keyword
+				+ "]";
 	}
 
 }

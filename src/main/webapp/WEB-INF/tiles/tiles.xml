@@ -9,7 +9,6 @@
 		<put-attribute name="content"/>
 		<put-attribute name="footer" value="/WEB-INF/views/layout/footer.jsp" />
 		<put-list-attribute name="javascripts">
-			<add-attribute value="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"/>
 			<add-attribute value="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"/>
 		</put-list-attribute>
 		<put-list-attribute name="stylesheets">

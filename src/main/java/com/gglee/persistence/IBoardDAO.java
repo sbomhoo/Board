@@ -84,4 +84,24 @@ public interface IBoardDAO {
 	 * @throws Exception
 	 */
 	public int countPaging(Criteria criteria) throws Exception;
+	
+	/**
+	 * 검색 조건 정보를 담은 <code>Criteria</code> 객체를 인자로 전달 받아서
+	 * 검색 조건에 적합한 게시글 목록만 가져와서 반환한다.
+	 * 
+	 * @param criteria Criteria
+	 * @return List<BoardVO>
+	 * @throws Exception
+	 */
+	public List<BoardVO> listSearch(Criteria criteria) throws Exception;
+	
+	/**
+	 * 검색 조건에 적합한 게시글 목록 개수를 반환한다.
+	 * 
+	 * @param criteria Criteria
+	 * @return int
+	 * @throws Exception
+	 */
+	public int listSearchCount(Criteria criteria) throws Exception;
+
 }
