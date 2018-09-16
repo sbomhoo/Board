@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.gglee.mapper.ReplyMapper">
+
+	<select id="create">
+	INSERT INTO reply (bno, replytext, replyer)
+	VALUES (#{bno}, #{replytext}, #{replyer})
+	</select>
+	
+	<update id="update">
+	UPDATE reply SET replytext = #{replytext}, updatedate = now()
+	WHERE rno = #{rno}
+	</update>
+	
+	<delete id="delete">
+	DELETE FROM reply WHERE rno = #{rno}
+	</delete>
+	
+	<select id="list" resultType="reply">
+	SELECT *
+	FROM reply
+	WHERE bno = #{bno}
+	ORDER BY rno DESC
+	</select>
+	
+	<select id="listPage" resultType="reply">
+	SELECT *
+	FROM reply
+	WHERE bno = #{bno}
+	ORDER BY rno DESC
+	LIMIT #{criteria.pageStart}, #{criteria.perPageNum}
+	</select>
+	
+	<select id="count" resultType="int">
+	SELECT count(bno) FROM reply WHERE bno = #{bno}
+	</select>
+</mapper>
