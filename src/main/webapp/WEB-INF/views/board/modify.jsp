@@ -8,6 +8,8 @@
 		<form role="form" method="post">
 			<input type="hidden" id="page" name="page" value="${criteria.page}">
 			<input type="hidden" id="perPageNum" name="perPageNum" value="${criteria.perPageNum}">
+			<input type="hidden" id="searchType" name="searchType" value="${criteria.searchType}">
+			<input type="hidden" id="keyword" name="keyword" value="${criteria.keyword}">
 
 			<!-- 게시글 번호 -->
 			<div class="form-group">

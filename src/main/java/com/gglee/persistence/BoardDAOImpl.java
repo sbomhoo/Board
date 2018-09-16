@@ -74,4 +74,14 @@ public class BoardDAOImpl implements IBoardDAO {
 		return sqlSession.selectOne(namespace + ".countPaging", criteria);
 	}
 
+	@Override
+	public List<BoardVO> listSearch(Criteria criteria) throws Exception {
+		return sqlSession.selectList(namespace + ".listSearch", criteria);
+	}
+
+	@Override
+	public int listSearchCount(Criteria criteria) throws Exception {
+		return sqlSession.selectOne(namespace + ".listSearchCount", criteria);
+	}
+
 }

@@ -73,4 +73,22 @@ public interface IBoardService {
 	 * @throws Exception
 	 */
 	public int listCountCriteria(Criteria criteria) throws Exception;
+	
+	/**
+	 * 검색 정보를 인자로 전달해서 게시글 목록을 가져온다.
+	 * 
+	 * @param criteria Criteria
+	 * @return List<BoardVO>
+	 * @throws Exception
+	 */
+	public List<BoardVO> listSearchCriteria(Criteria criteria) throws Exception;
+
+	/**
+	 * 검색 조건에 일치하는 게시글 목록 개수를 반환한다.
+	 * 
+	 * @param criteria Criteria
+	 * @return int
+	 * @throws Exception
+	 */
+	public int listSearchCount(Criteria criteria) throws Exception;
 }

@@ -57,4 +57,14 @@ public class BoardServiceImpl implements IBoardService {
 		return boardDAO.countPaging(criteria);
 	}
 
+	@Override
+	public List<BoardVO> listSearchCriteria(Criteria criteria) throws Exception {
+		return boardDAO.listSearch(criteria);
+	}
+
+	@Override
+	public int listSearchCount(Criteria criteria) throws Exception {
+		return boardDAO.listSearchCount(criteria);
+	}
+
 }
